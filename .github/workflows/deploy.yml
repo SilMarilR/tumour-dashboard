@@ -27,6 +27,9 @@ jobs:
         shell: Rscript {0}
 
       - name: 🚀 Deploy to shinyapps.io (with logging)
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+          SECRET: ${{ secrets.SECRET }}
         run: |
           print("Setting account info...")
           rsconnect::setAccountInfo(name='92l5iz-silvana-miranda',
@@ -35,4 +38,3 @@ jobs:
           print("Deploying app...")
           rsconnect::deployApp(appDir = ".", appName = "tumour-dashboard")
         shell: Rscript {0}
-
