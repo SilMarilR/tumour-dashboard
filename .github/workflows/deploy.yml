@@ -44,5 +44,5 @@ jobs:
                                      token=Sys.getenv("TOKEN"),
                                      secret=Sys.getenv("SECRET"))
           print("Deploying app...")
-          rsconnect::deployApp(appDir = ".", appName = "tumour-dashboard")
+          rsconnect::deployApp(appDir = ".", appName = "tumour-dashboard", forceUpdate = TRUE)
         shell: Rscript {0}
