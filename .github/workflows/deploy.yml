@@ -26,11 +26,13 @@ jobs:
           install.packages("rsconnect", repos = "https://cloud.r-project.org")
         shell: Rscript {0}
 
-      - name: 🚀 Deploy to shinyapps.io
+      - name: 🚀 Deploy to shinyapps.io (with logging)
         run: |
+          print("Setting account info...")
           rsconnect::setAccountInfo(name='SilMarilR',
-                                     token='${{ secrets.TOKEN }}',
-                                     secret='${{ secrets.SECRET }}')
+                                     token=Sys.getenv("TOKEN"),
+                                     secret=Sys.getenv("SECRET"))
+          print("Deploying app...")
           rsconnect::deployApp(appDir = ".", appName = "tumour-dashboard")
         shell: Rscript {0}
 
