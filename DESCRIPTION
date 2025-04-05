@@ -1,0 +1,16 @@
+Package: tumourdashboard
+Type: Shiny
+Title: Tumour Monitoring Dashboard
+Version: 0.0.1
+Author: Your Name
+Description: A dashboard to visualize tumour volume and weight data from mice.
+Depends:
+  R (>= 3.6.0)
+Imports:
+  shiny,
+  readxl,
+  dplyr,
+  ggplot2,
+  lubridate,
+  tidyr,
+  plotly
