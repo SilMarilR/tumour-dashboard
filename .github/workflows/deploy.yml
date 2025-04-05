@@ -10,21 +10,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: 🛎️ Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Set up R
+      - name: 🧰 Set up R
         uses: r-lib/actions/setup-r@v2
 
-      - name: Install rsconnect
+      - name: 📦 Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+
+      - name: 📦 Install rsconnect
         run: |
           install.packages("rsconnect", repos = "https://cloud.r-project.org")
         shell: Rscript {0}
 
-      - name: Deploy to shinyapps.io
+      - name: 🚀 Deploy to shinyapps.io
         run: |
           rsconnect::setAccountInfo(name='SilMarilR',
                                      token='${{ secrets.TOKEN }}',
                                      secret='${{ secrets.SECRET }}')
           rsconnect::deployApp(appDir = ".", appName = "tumour-dashboard")
         shell: Rscript {0}
+
