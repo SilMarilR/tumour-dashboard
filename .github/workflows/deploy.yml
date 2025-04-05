@@ -24,4 +24,4 @@ jobs:
           SHINY_TOKEN: ${{ secrets.TOKEN }}
           SHINY_SECRET: ${{ secrets.SECRET }}
           APP_NAME: 'tumour-dashboard'       # this will be your shinyapps.io app URL
-          APP_DIR: ''
+          APP_DIR: '.'
