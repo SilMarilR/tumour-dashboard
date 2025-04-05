@@ -1,0 +1,27 @@
+on:
+  push:
+    branches:
+      - main
+
+name: Deploy tumour dashboard to shinyapps.io
+
+jobs:
+  deploy-shiny:
+    name: Deploy to shinyapps.io
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.TOKEN }}
+
+    steps:
+      - name: 🛎️ Checkout repository
+        uses: actions/checkout@v2
+
+      - id: deploy
+        name: 💎 Deploy to shinyapps.io
+        uses: qwert666/shinyapps-actions@main
+        env:
+          SHINY_USERNAME: 'SilMarilR'        # your shinyapps.io username
+          SHINY_TOKEN: ${{ secrets.TOKEN }}
+          SHINY_SECRET: ${{ secrets.SECRET }}
+          APP_NAME: 'tumour-dashboard'       # this will be your shinyapps.io app URL
+          APP_DIR: ''
