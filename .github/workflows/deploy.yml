@@ -29,7 +29,7 @@ jobs:
       - name: 🚀 Deploy to shinyapps.io (with logging)
         run: |
           print("Setting account info...")
-          rsconnect::setAccountInfo(name='SilMarilR',
+          rsconnect::setAccountInfo(name='92l5iz-silvana-miranda',
                                      token=Sys.getenv("TOKEN"),
                                      secret=Sys.getenv("SECRET"))
           print("Deploying app...")
